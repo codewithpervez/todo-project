@@ -1,4 +1,10 @@
 from django.shortcuts import render
 
+from todo.models import Task
+
 def home(request):
-	return render(request, 'home.html')
+	tasks = Task.objects.all()
+	context = {
+        'tasks': tasks,
+    }
+	return render(request, 'home.html', context)
